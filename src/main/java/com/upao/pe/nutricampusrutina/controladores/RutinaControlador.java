@@ -1,6 +1,7 @@
 package com.upao.pe.nutricampusrutina.controladores;
 
 
+import com.upao.pe.nutricampusrutina.modelos.Rutina;
 import com.upao.pe.nutricampusrutina.serializers.rutina.CrearRutinaRequest;
 import com.upao.pe.nutricampusrutina.serializers.rutina.EditarRutinaRequest;
 import com.upao.pe.nutricampusrutina.serializers.rutina.RutinaSerializer;
@@ -27,12 +28,17 @@ public class RutinaControlador {
     }
 
     @PutMapping("/editar/{id}")
-    public RutinaSerializer editarRutina(@PathVariable Long id, @RequestBody EditarRutinaRequest request){
+    public RutinaSerializer editarRutina(@PathVariable (name = "id") Long id, @RequestBody EditarRutinaRequest request){
         return rutinaServicio.editarRutina(id, request);
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public List<RutinaSerializer> eliminarRutina(@PathVariable Long id){
+    public List<RutinaSerializer> eliminarRutina(@PathVariable (name = "id") Long id){
         return rutinaServicio.eliminarRutina(id);
+    }
+
+    @GetMapping("/buscar/{id}")
+    public Rutina buscarRutina(@PathVariable (name = "id") Long id){
+        return rutinaServicio.buscarRutina(id);
     }
 }
