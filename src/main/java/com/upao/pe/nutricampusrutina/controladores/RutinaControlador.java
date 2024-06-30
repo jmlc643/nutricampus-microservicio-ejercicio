@@ -41,4 +41,9 @@ public class RutinaControlador {
     public Rutina buscarRutina(@PathVariable (name = "id") Long id){
         return rutinaServicio.buscarRutina(id);
     }
+
+    @PostMapping("/serializer/")
+    public RutinaSerializer retornarSerializer(@RequestBody Rutina rutina){
+        return rutinaServicio.retornarRutinaSerializer(rutina);
+    }
 }
