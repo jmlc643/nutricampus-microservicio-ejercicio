@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("ejercicio")
-@CrossOrigin("https://develop--nutricampus.netlify.app")
+@CrossOrigin("https://angular-nutri-campus.vercel.app")
 public class EjercicioControlador {
 
     @Autowired private EjercicioServicio ejercicioServicio;
