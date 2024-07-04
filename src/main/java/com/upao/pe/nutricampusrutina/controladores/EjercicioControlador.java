@@ -1,8 +1,7 @@
 package com.upao.pe.nutricampusrutina.controladores;
 
 
-import com.upao.pe.nutricampusrutina.serializers.ejercicio.EditarEjercicioRequest;
-import com.upao.pe.nutricampusrutina.serializers.ejercicio.EjercicioSerializer;
+import com.upao.pe.nutricampusrutina.modelos.Ejercicio;
 import com.upao.pe.nutricampusrutina.servicios.EjercicioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +15,27 @@ public class EjercicioControlador {
     @Autowired private EjercicioServicio ejercicioServicio;
 
     @GetMapping("/listar/")
-    public List<EjercicioSerializer> listarEjercicios(){
+    public List<Ejercicio> listarEjercicios(){
         return ejercicioServicio.listarEjercicios();
     }
 
     @PostMapping("/crear/")
-    public EjercicioSerializer crearEjercicio(@RequestBody EjercicioSerializer request){
+    public Ejercicio crearEjercicio(@RequestBody Ejercicio request){
         return ejercicioServicio.crearEjercicio(request);
     }
 
     @PutMapping("/editar/{nombre}")
-    public EjercicioSerializer editarEjercicio(@PathVariable String nombre, @RequestBody EditarEjercicioRequest request){
+    public Ejercicio editarEjercicio(@PathVariable String nombre, @RequestBody Ejercicio request){
         return ejercicioServicio.editarEjercicio(nombre, request);
     }
 
     @DeleteMapping("/eliminar/{nombre}")
-    public List<EjercicioSerializer> eliminarEjercicio(@PathVariable String nombre){
+    public List<Ejercicio> eliminarEjercicio(@PathVariable String nombre){
         return ejercicioServicio.eliminarEjercicio(nombre);
+    }
+
+    @GetMapping("/buscar/{nombre}")
+    public Ejercicio buscarEjercicio(@PathVariable String nombre){
+        return ejercicioServicio.buscarEjercicio(nombre);
     }
 }
