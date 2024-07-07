@@ -15,7 +15,7 @@ public class EjercicioControlador {
 
     @Autowired private EjercicioServicio ejercicioServicio;
 
-    @GetMapping("/")
+    @GetMapping("/listar/")
     public List<Ejercicio> listarEjercicios(){
         return ejercicioServicio.listarEjercicios();
     }
